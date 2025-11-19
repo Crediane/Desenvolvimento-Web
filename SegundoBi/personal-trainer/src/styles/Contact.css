@@ -1,0 +1,60 @@
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding-block: 5rem;
+}
+
+#contact header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+#contact header p:first-of-type {
+    color: var(--primary-color);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-sm);
+}
+
+#contact header p {
+    color: var(--second-text-color);
+    max-width: 40ch;
+}
+
+#contact form {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+#contact form input,
+#contact form textarea {
+    background-color: var(--light-gray);
+    border: 0.125rem solid #e4e4e4;
+    padding: var(--py-base) var(--px-lg);
+    border-radius: 0.4rem;
+    width: 100%;
+    font-family: var(--ff-sans);
+    font-size: var(--fs-sm);
+}
+
+#contact form input::placeholder,
+#contact form textarea::placeholder {
+    color: var(--second-text-color);
+}
+
+#contact form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#contact .btn-wrapper {
+    max-width: 200px;
+    margin-inline: auto;
+}
