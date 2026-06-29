@@ -9,7 +9,7 @@ import "../styles/Footer.css"
 
 import Logo from "../assets/Logo.svg"
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom" // <-- Adicionamos a importação do Link aqui
+import { Link } from "react-router-dom"
 import Menu from "../assets/menu.svg"
 import Close from "../assets/close.svg"
 import Button from "../components/Button"
@@ -62,7 +62,6 @@ export function Home() {
                     </div>
                     <div className="desktop-only">
                         <div className="flex items-center">
-                            {/* Alteramos o href vazio pelo Link do React Router */}
                             <Link className="reverse-color ml-lg" to="/acesso">Login</Link>
                             <Link to="/cadastro">
                                 <Button text="Cadastre-se" />
@@ -79,7 +78,8 @@ export function Home() {
                                             <a onClick={() => setShowMobileMenu(false)} href="#">Home</a>
                                         </li>
                                         <li>
-                                            <a onClick={() => setShowMobileMenu(false)} href="#">Login</a>
+                                            {/* --- CORREÇÃO APLICADA AQUI --- */}
+                                            <Link onClick={() => setShowMobileMenu(false)} to="/acesso">Login</Link>
                                         </li>
                                         <li>
                                             <a onClick={() => setShowMobileMenu(false)} href="#solution">Soluções</a>
@@ -123,7 +123,6 @@ export function Home() {
                     <p>Aqui, cada aluna é tratada com atenção e carinho. Nosso objetivo é fazer você se sentir confiante, saudável e feliz ao se olhar no espelho!</p>
 
                     <div className="flex gap-1">
-                        {/* Envolvemos o botão Cadastre-se com o Link também */}
                         <span>
                             <Link to="/cadastro">
                                 <Button text="Cadastre-se" />
@@ -358,10 +357,8 @@ export function Home() {
                     </p>
                 </header>
 
-                {/* Nova área de botões inspirada na imagem */}
                 <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '40px', paddingBottom: '40px' }}>
                     
-                    {/* Botão E-mail (Borda Roxa) */}
                     <a 
                         href="mailto:elizanepersonal.admin@teste.com" 
                         target="_blank"
@@ -383,7 +380,6 @@ export function Home() {
                         Enviar E-mail
                     </a>
 
-                    {/* Botão WhatsApp (Fundo Verde) */}
                     <a 
                         href="https://wa.me/5545999191677" 
                         target="_blank"
@@ -406,7 +402,6 @@ export function Home() {
                         Chamar no WhatsApp
                     </a>
 
-                    {/* Botão Instagram (Fundo Rosa) */}
                     <a 
                         href="https://instagram.com/elizanetillwitzpersonal" 
                         target="_blank"
