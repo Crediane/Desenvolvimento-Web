@@ -9,6 +9,7 @@ import "../styles/Footer.css"
 
 import Logo from "../assets/Logo.svg"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom" // <-- Adicionamos a importação do Link aqui
 import Menu from "../assets/menu.svg"
 import Close from "../assets/close.svg"
 import Button from "../components/Button"
@@ -61,8 +62,11 @@ export function Home() {
                     </div>
                     <div className="desktop-only">
                         <div className="flex items-center">
-                            <a className="reverse-color ml-lg" href="">Login</a>
-                            <Button text="Cadastre-se" />
+                            {/* Alteramos o href vazio pelo Link do React Router */}
+                            <Link className="reverse-color ml-lg" to="/acesso">Login</Link>
+                            <Link to="/cadastro">
+                                <Button text="Cadastre-se" />
+                            </Link>
                         </div>
                     </div>
 
@@ -73,6 +77,9 @@ export function Home() {
                                     <ul>
                                         <li>
                                             <a onClick={() => setShowMobileMenu(false)} href="#">Home</a>
+                                        </li>
+                                        <li>
+                                            <a onClick={() => setShowMobileMenu(false)} href="#">Login</a>
                                         </li>
                                         <li>
                                             <a onClick={() => setShowMobileMenu(false)} href="#solution">Soluções</a>
@@ -116,10 +123,13 @@ export function Home() {
                     <p>Aqui, cada aluna é tratada com atenção e carinho. Nosso objetivo é fazer você se sentir confiante, saudável e feliz ao se olhar no espelho!</p>
 
                     <div className="flex gap-1">
-                        <span><Button text="Cadastre-se" /></span>
-                        <span className="desktop-only">
-                            <Button text="Veja mais" secondary />
+                        {/* Envolvemos o botão Cadastre-se com o Link também */}
+                        <span>
+                            <Link to="/cadastro">
+                                <Button text="Cadastre-se" />
+                            </Link>
                         </span>
+                        
                     </div>
                 </div>
             </section>
@@ -141,11 +151,11 @@ export function Home() {
                     </p>
                 </header>
                 <section className="even-columns">
-                    <Card titulo='Produto Vencedor' paragrafo='Nossos clientes tem o diferencial de participarem de desafios regulares, para que, 
+                    <Card titulo='Desafios e Resultados' paragrafo='Nossos clientes tem o diferencial de participarem de desafios regulares, para que, 
                     além da atividade física, tenham um estilo de vida melhor incluindo a alimentação!' />
-                    <Card titulo='Produto Vencedor' paragrafo='Nosso acompanhamento também inclui convênios com clínicas de nutrição e estética, assim,
+                    <Card titulo='Bem-estar' paragrafo='Nosso acompanhamento também inclui convênios com clínicas de nutrição e estética, assim,
                     você pode usufruir de vários benefícios com preços mais acessíveis!' />
-                    <Card titulo='Produto Vencedor' paragrafo='Nosso objetivo aqui é lhe atender da melhor maneira possível, exercícios adaptados para 
+                    <Card titulo='Foco no seu Objetivo' paragrafo='Nosso objetivo aqui é lhe atender da melhor maneira possível, exercícios adaptados para 
                     qualquer tipo de necessidade. Somos especialistas em dar o nosso melhor para o seu melhor!' />
                 </section>
             </section>
@@ -338,30 +348,88 @@ export function Home() {
                 </section>
             </section>
 
-            <section id="contact" className="container">
+           <section id="contact" className="container">
                 <header>
-                    <p>Envie sua dúvida</p>
+                    <p>Fale Comigo</p>
                     <h2>Entre em contato</h2>
                     <p>
-                        Entre em contato, estamos dispostos a tirar qualquer dúvida,
-                        seja um orçamento, uma dúvida técnica.
-                        Estamos à disposição para responder!
+                        Aperte em um dos botões abaixo para falar diretamente comigo. 
+                        Estou à disposição para tirar qualquer dúvida sobre os treinos, orçamentos ou consultorias!
                     </p>
                 </header>
 
-                <form>
-                    <input
-                        type="email"
-                        placeholder="Seu melhor Email"
-                    />
-                    <textarea
-                        placeholder="Motivo do contato. Ex: Poderia me enviar um orçamento?"
-                    />
+                {/* Nova área de botões inspirada na imagem */}
+                <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '40px', paddingBottom: '40px' }}>
+                    
+                    {/* Botão E-mail (Borda Roxa) */}
+                    <a 
+                        href="mailto:elizanepersonal.admin@teste.com" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ 
+                            padding: '15px 30px', 
+                            backgroundColor: 'transparent', 
+                            color: '#9333ea', 
+                            border: '2px solid #9333ea', 
+                            borderRadius: '6px', 
+                            textDecoration: 'none', 
+                            fontWeight: 'bold', 
+                            fontSize: '14px', 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '1px',
+                            transition: '0.3s'
+                        }}
+                    >
+                        Enviar E-mail
+                    </a>
 
-                    <div className="btn-wrapper">
-                        <Button text="Enviar" />
-                    </div>
-                </form>
+                    {/* Botão WhatsApp (Fundo Verde) */}
+                    <a 
+                        href="https://wa.me/5545999191677" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ 
+                            padding: '15px 30px', 
+                            backgroundColor: '#22c55e', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '6px', 
+                            textDecoration: 'none', 
+                            fontWeight: 'bold', 
+                            fontSize: '14px', 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '1px', 
+                            boxShadow: '0 4px 6px rgba(34, 197, 94, 0.3)',
+                            transition: '0.3s'
+                        }}
+                    >
+                        Chamar no WhatsApp
+                    </a>
+
+                    {/* Botão Instagram (Fundo Rosa) */}
+                    <a 
+                        href="https://instagram.com/elizanetillwitzpersonal" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ 
+                            padding: '15px 30px', 
+                            backgroundColor: '#ec4899', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '6px', 
+                            textDecoration: 'none', 
+                            fontWeight: 'bold', 
+                            fontSize: '14px', 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '1px', 
+                            boxShadow: '0 4px 6px rgba(236, 72, 153, 0.3)',
+                            transition: '0.3s'
+                        }}
+                    >
+                        Meu Instagram
+                    </a>
+
+                </div>
             </section>
 
             <footer id="footer">
@@ -405,7 +473,7 @@ export function Home() {
                 </div>
 
                 <div className="footer-bar">
-                    <p>Feito para te ajudar a ter uma vida mais saudável ♥ ©2025</p>
+                    <p>Feito para te ajudar a ter uma vida mais saudável ♥ ©2026</p>
                 </div>
             </footer>
         </>
